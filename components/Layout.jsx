@@ -11,12 +11,12 @@ function Layout({ title, children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col min-h-screen justify-between">
+      <div className="flex flex-col min-h-screen">
         <header>
           <Navbar />
         </header>
-        <main>{children}</main>
-        <footer className="flex justify-center items-center shadow-inner h-10 font-medium">
+        <main className="flex-grow">{children}</main>
+        <footer className="flex items-center justify-center h-10 font-medium shadow-inner">
           <h1>Copyright @Plant Port 2023</h1>
         </footer>
       </div>
