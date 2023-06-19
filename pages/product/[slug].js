@@ -17,7 +17,12 @@ function ProductPage() {
       <Layout title={product.name}>
         <div className="mt-24 md:mt-32 md:container flex flex-col md:flex-row justify-center items-center gap-6">
           <div className="">
-            <Image src={product.img} width={300} height={300} />
+            <Image
+              src={product.img}
+              width={300}
+              height={300}
+              alt="product image"
+            />
           </div>
           <div className="flex flex-col pr-[103px]">
             <h1 className="text-2xl font-medium">{product.name}</h1>
