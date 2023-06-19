@@ -3,8 +3,12 @@ import Image from "next/image";
 import { data } from "@/utils/data";
 import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
+import { addToCart } from "@/redux/cart.slice";
+import { useDispatch } from "react-redux";
 
 function ProductPage() {
+  const dispatch = useDispatch();
+
   const router = useRouter();
   const { slug } = router.query;
   const product = data.products.find((e) => e.slug === slug);
@@ -29,7 +33,10 @@ function ProductPage() {
             <p className="text-base pt-1 text-gray-500">Per peice</p>
             <p className="pt-2 text-2xl font-medium">{product.price}</p>
             <div className="flex gap-5 pt-4">
-              <button className="px-3 py-2 border-[3px] border-green-500">
+              <button
+                className="px-3 py-2 border-[3px] border-green-500"
+                onClick={() => dispatch(addToCart(product))}
+              >
                 Add to bag
               </button>
               <button className="px-3 py-2 bg-green-500">Buy Now</button>
