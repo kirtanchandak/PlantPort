@@ -11,8 +11,8 @@ function Products({ product }) {
             <div>
               <Image
                 src={product.img}
-                width={200}
-                height={200}
+                width={300}
+                height={300}
                 alt="product image"
                 className="flec justify-center"
               />

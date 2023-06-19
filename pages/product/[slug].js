@@ -24,7 +24,7 @@ function ProductPage() {
               alt="product image"
             />
           </div>
-          <div className="flex flex-col pr-[103px]">
+          <div className="flex flex-col pr-[70px]">
             <h1 className="text-2xl font-medium">{product.name}</h1>
             <p className="text-base pt-1 text-gray-500">Per peice</p>
             <p className="pt-2 text-2xl font-medium">{product.price}</p>

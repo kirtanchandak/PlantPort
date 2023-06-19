@@ -16,7 +16,7 @@ export const data = {
     },
     {
       id: "3",
-      name: "Light Green Creramic Planter",
+      name: "Light Green Creramic ",
       slug: "light-green-ceramic-planter",
       price: "$25.00",
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/green-ceramic.webp?updatedAt=1687069364110",
