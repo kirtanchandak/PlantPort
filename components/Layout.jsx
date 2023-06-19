@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Navbar from "./Header";
+import Footer from "./Footer";
 
 function Layout({ title, children }) {
   return (
@@ -16,8 +17,8 @@ function Layout({ title, children }) {
           <Navbar />
         </header>
         <main className="flex-grow">{children}</main>
-        <footer className="flex items-center justify-center h-10 font-medium shadow-inner mt-5">
-          <h1>Copyright @Plant Port 2023</h1>
+        <footer>
+          <Footer />
         </footer>
       </div>
     </>
