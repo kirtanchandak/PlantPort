@@ -1,8 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import Cookies from "js-cookie";
+
+const getInitialCartState = () => {
+  const cartItems = Cookies.get("cartItems");
+  return cartItems ? JSON.parse(cartItems) : [];
+};
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState: [],
+  initialState: getInitialCartState(),
   reducers: {
     addToCart: (state, action) => {
       const itemExists = state.find((item) => item.id === action.payload.id);
@@ -11,6 +17,7 @@ const cartSlice = createSlice({
       } else {
         state.push({ ...action.payload, quantity: 1 });
       }
+      Cookies.set("cartItems", JSON.stringify(state));
     },
 
     incrementQuantity: (state, action) => {

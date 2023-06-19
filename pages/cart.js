@@ -7,6 +7,7 @@ import {
   decrementQuantity,
   removeFromCart,
 } from "@/redux/cart.slice";
+import dynamic from "next/dynamic";
 
 function Cart() {
   const cart = useSelector((state) => state.cart);
@@ -97,4 +98,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default dynamic(() => Promise.resolve(Cart), { ssr: false });
