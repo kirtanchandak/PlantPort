@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Navbar from "./Header";
 import Footer from "./Footer";
+import dynamic from "next/dynamic";
 
 function Layout({ title, children }) {
   return (
@@ -13,9 +14,9 @@ function Layout({ title, children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex flex-col min-h-screen">
-        <header>
+        <div>
           <Navbar />
-        </header>
+        </div>
         <main className="flex-grow">{children}</main>
         <footer>
           <Footer />
@@ -25,4 +26,4 @@ function Layout({ title, children }) {
   );
 }
 
-export default Layout;
+export default dynamic(() => Promise.resolve(Layout), { ssr: false });

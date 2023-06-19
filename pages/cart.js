@@ -8,6 +8,7 @@ import {
   removeFromCart,
 } from "@/redux/cart.slice";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 function Cart() {
   const cart = useSelector((state) => state.cart);
@@ -22,9 +23,25 @@ function Cart() {
   return (
     <div>
       {cart.length === 0 ? (
-        <div>
-          <h1>No items found</h1>
-        </div>
+        <>
+          <Layout>
+            <div className="flex justify-center items-center flex-col md:m-24 md:pt-0 pt-28">
+              <Image
+                src="https://cdn-icons-png.flaticon.com/512/4555/4555971.png"
+                width={300}
+                height={300}
+                className="mr-7"
+              />
+              <h1 className=" text-2xl font-medium mt-10">Your bag is empty</h1>
+              <p className="text-gray-500 pt-2">
+                Looks like you haven't made your choice yet..
+              </p>
+              <Link href="/" className="mt-4 bg-green-500 p-2 rounded-lg">
+                Back To Homepage
+              </Link>
+            </div>
+          </Layout>
+        </>
       ) : (
         <>
           <Layout>
