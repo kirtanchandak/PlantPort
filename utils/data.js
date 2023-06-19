@@ -10,7 +10,7 @@ export const data = {
     {
       id: "2",
       name: "Tree Trunk Planter",
-      slug: "teee-trunk-planter",
+      slug: "tree-trunk-planter",
       price: "$15.00",
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/trunk.webp?updatedAt=1687069364173",
     },

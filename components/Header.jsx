@@ -13,7 +13,7 @@ const Navbar = () => {
       text-2xl justify-between fixed w-screen font-poppins"
       >
         <div className="flex items-center">
-          <a href="#" className="pl-2 py-4 mr-auto md:mr-0 font-[600]">
+          <a href="/" className="pl-2 py-4 mr-auto md:mr-0 font-[600]">
             Plants Port🪴
           </a>
           <div className="md:hidden mr-2 cursor-pointer" onClick={toggle}>
