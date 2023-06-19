@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { FaHamburger } from "react-icons/fa";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const cart = useSelector((state) => state.cart);
+
+  const getItemsCount = () => {
+    return cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
+  };
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -35,7 +41,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link href="/cart" className="px-6">
-                Cart 🛒
+                Cart 🛒 {getItemsCount()}
               </Link>
             </li>
           </ul>
@@ -56,7 +62,7 @@ const Navbar = () => {
             Shop
           </Link>
           <Link href="/cart" className="px-6">
-            About Us
+            Cart 🛒
           </Link>
         </div>
       </nav>

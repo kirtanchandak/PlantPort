@@ -27,52 +27,67 @@ function Cart() {
       ) : (
         <>
           <Layout>
-            <div className="pt-20 flex flex-col md:flex-row justify-center items-center">
-              <div className="w-2/3">
-                {cart.map((item) => (
-                  <div key={item.id} className="p-5 ">
-                    <div className="flex items-center gap-5 flex-col md:flex-row">
-                      <div className="">
-                        <Image
-                          src={item.img}
-                          width={300}
-                          height={300}
-                          className="md:w-[200px]"
-                        />
-                      </div>
-                      <div>
-                        <h1 className="text-xl">{item.name}</h1>
-                        <h1 className="text-xl font-semibold">{item.price}</h1>
-                        <div className="flex items-center gap-2 pt-3">
+            <div class="container mx-auto px-4 py-8 pt-20 ">
+              <div class="flex flex-col md:flex-row">
+                <div class="md:w-3/4 lg:pl-24">
+                  {cart.map((item) => (
+                    <div key={item.id} className="p-5 ">
+                      <div className="flex items-center gap-5 flex-col md:flex-row">
+                        <div className="">
+                          <Image
+                            src={item.img}
+                            width={300}
+                            height={300}
+                            className="md:w-[200px]"
+                          />
+                        </div>
+                        <div className="mr-36">
+                          <h1 className="text-xl">{item.name}</h1>
+                          <h1 className="text-xl font-semibold">
+                            ₹{item.price}
+                          </h1>
+                          <div className="flex items-center gap-2 pt-3">
+                            <button
+                              className="bg-green-300 px-2"
+                              onClick={() =>
+                                dispatch(incrementQuantity(item.id))
+                              }
+                            >
+                              +
+                            </button>
+                            <button
+                              className="bg-red-300 px-2"
+                              onClick={() =>
+                                dispatch(decrementQuantity(item.id))
+                              }
+                            >
+                              -
+                            </button>
+                          </div>
+                          <p className="pt-2">Quantity: {item.quantity}</p>
                           <button
-                            className="bg-green-300 px-2"
-                            onClick={() => dispatch(incrementQuantity(item.id))}
+                            className="p-1 mt-2 text-gray-500"
+                            onClick={() => dispatch(removeFromCart(item.id))}
                           >
-                            +
-                          </button>
-                          <button
-                            className="bg-red-300 px-2"
-                            onClick={() => dispatch(decrementQuantity(item.id))}
-                          >
-                            -
+                            REMOVE
                           </button>
                         </div>
-                        <p className="pt-2">Quantity: {item.quantity}</p>
-                        <button
-                          className="p-1 mt-2 bg-green-500"
-                          onClick={() => dispatch(removeFromCart(item.id))}
-                        >
-                          Remove Item
-                        </button>
                       </div>
                     </div>
+                  ))}
+                </div>
+                <div class="md:w-3/4 md:pl-8">
+                  <div class="ml-6 w-60 pt-4">
+                    <div class="px-2 py-3 sm:pb-4.5 lg:py-5 border-2 border-gray-800">
+                      <h1>Total Amount: ₹{getTotalPrice()}</h1>
+                    </div>
+                    <div>
+                      <button class="bg-green-500  font-semibold px-4 py-1 rounded mt-3">
+                        Check Out
+                      </button>
+                    </div>
                   </div>
-                ))}
-              </div>
-              <div className="md:w-1/3 p-5 text-center lg:mr-36">
-                <h1 className="text-2xl font-semibold ">
-                  Total Quantity: {getTotalPrice()}
-                </h1>
+                </div>
               </div>
             </div>
           </Layout>

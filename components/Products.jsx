@@ -21,7 +21,7 @@ function Products({ product }) {
               />
               <div className="pt-3">
                 <h1 className="text-lg">{product.name}</h1>
-                <p className="font-medium">{product.price}</p>
+                <p className="font-medium">₹{product.price}</p>
               </div>
             </Link>
             <button

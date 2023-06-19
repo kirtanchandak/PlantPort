@@ -31,7 +31,7 @@ function ProductPage() {
           <div className="flex flex-col pr-[70px]">
             <h1 className="text-2xl font-medium">{product.name}</h1>
             <p className="text-base pt-1 text-gray-500">Per peice</p>
-            <p className="pt-2 text-2xl font-medium">{product.price}</p>
+            <p className="pt-2 text-2xl font-medium">₹{product.price}</p>
             <div className="flex gap-5 pt-4">
               <button
                 className="px-3 py-2 border-[3px] border-green-500"
