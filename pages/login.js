@@ -1,16 +1,37 @@
 import Layout from "@/components/Layout";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 function Login() {
+  const { data: session } = useSession();
+
+  const router = useRouter();
+  const { redirect } = router.query;
+
+  useEffect(() => {
+    if (session?.user) {
+      router.push(redirect || "/");
+    }
+  }, [router, session, redirect]);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const submitHandeler = ({ email, password }) => {
-    console.log(email, password);
+  const submitHandeler = async ({ email, password }) => {
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -28,6 +49,7 @@ function Login() {
             <input
               type="email"
               id="email"
+              name="email"
               className="border-2 border-gray-500 rounded-sm"
               {...register("email", { required: "Please enter email!" })}
             />
@@ -42,6 +64,7 @@ function Login() {
             <input
               type="password"
               id="password"
+              name="password"
               className="border-2 border-gray-500 rounded-sm"
               {...register("password", {
                 required: "Please enter password!",
@@ -55,7 +78,10 @@ function Login() {
           {errors.password && (
             <div className="text-red-500 mt-1">{errors.password.message}</div>
           )}
-          <button className="mt-4 px-3 py-[3px] rounded-md bg-green-500">
+          <button
+            type="submit"
+            className="mt-4 px-3 py-[3px] rounded-md bg-green-500"
+          >
             SignIn
           </button>
         </form>
