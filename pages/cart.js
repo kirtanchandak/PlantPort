@@ -9,8 +9,10 @@ import {
 } from "@/redux/cart.slice";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 function Cart() {
+  const router = useRouter();
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -100,7 +102,10 @@ function Cart() {
                       <h1>Total Amount: ₹{getTotalPrice()}</h1>
                     </div>
                     <div>
-                      <button class="bg-green-500  font-semibold px-4 py-1 rounded mt-3">
+                      <button
+                        class="bg-green-500  font-semibold px-4 py-1 rounded mt-3"
+                        onClick={() => router.push("/login?redirect=/shipping")}
+                      >
                         Check Out
                       </button>
                     </div>

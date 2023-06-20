@@ -30,12 +30,12 @@ const Navbar = () => {
         <div className="link-content hidden md:flex mt-4">
           <ul className="flex" id="nav">
             <li>
-              <Link href="#" className="px-6">
-                Home
+              <Link href="/login" className="px-6">
+                Login
               </Link>
             </li>
             <li>
-              <Link href="shop" className="px-6 ">
+              <Link href="/" className="px-6 ">
                 Shop
               </Link>
             </li>
@@ -55,10 +55,10 @@ const Navbar = () => {
           }
           onClick={toggle}
         >
-          <Link href="#" className="px-6">
-            Home
+          <Link href="/login" className="px-6">
+            Login
           </Link>
-          <Link href="shop" className="px-6">
+          <Link href="/" className="px-6">
             Shop
           </Link>
           <Link href="/cart" className="px-6">
