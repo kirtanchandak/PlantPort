@@ -9,14 +9,16 @@ function Login() {
     formState: { errors },
   } = useForm();
 
-  const submitHandeler = ({ email, password }) => {};
+  const submitHandeler = ({ email, password }) => {
+    console.log(email, password);
+  };
 
   return (
     <>
       <Layout>
         <form
           onSubmit={handleSubmit(submitHandeler)}
-          className="flex flex-col justify-center items-center m-32"
+          className="flex flex-col justify-center items-center m-24 md:m-32 pt-10"
         >
           <h1 className="text-4xl font-bold">Login</h1>
           <div className="flex flex-col gap-1 pt-4">
