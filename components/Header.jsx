@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { FaHamburger } from "react-icons/fa";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { signOut, useSession } from "next-auth/react";
+import { emptyCart } from "@/redux/cart.slice";
 
 const Navbar = () => {
   const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   const getItemsCount = () => {
     return cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
@@ -18,6 +20,7 @@ const Navbar = () => {
   const { status, data: session } = useSession();
 
   const logOut = () => {
+    dispatch(emptyCart());
     signOut({ callbackUrl: "/login" });
   };
 
