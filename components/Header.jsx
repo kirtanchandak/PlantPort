@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaHamburger } from "react-icons/fa";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
   const cart = useSelector((state) => state.cart);
@@ -16,6 +16,11 @@ const Navbar = () => {
   };
 
   const { status, data: session } = useSession();
+
+  const logOut = () => {
+    signOut({ callbackUrl: "/login" });
+  };
+
   return (
     <div>
       <nav
@@ -31,14 +36,14 @@ const Navbar = () => {
           </div>
         </div>
         <div className="link-content hidden md:flex mt-4">
-          <ul className="flex" id="nav">
+          <ul className="flex gap-10" id="nav">
             <li>
-              <Link href="/cart" className="px-6">
+              <Link href="/cart" className="">
                 Cart 🛒 {getItemsCount()}
               </Link>
             </li>
             <li>
-              <Link href="/" className="px-6 ">
+              <Link href="/" className="">
                 Shop
               </Link>
             </li>
@@ -46,9 +51,14 @@ const Navbar = () => {
               {status === "loading" ? (
                 "Loading"
               ) : session?.user ? (
-                session.user.name
+                <div className="flex gap-5">
+                  <h1 className="">{session.user.name}</h1>
+                  <button onClick={() => logOut()} className="mr-4">
+                    Logout
+                  </button>
+                </div>
               ) : (
-                <Link href="/login" className="px-6">
+                <Link href="/login" className="mr-4">
                   Login
                 </Link>
               )}
@@ -64,9 +74,18 @@ const Navbar = () => {
           }
           onClick={toggle}
         >
-          <Link href="/login" className="px-6">
-            Login
-          </Link>
+          {status === "loading" ? (
+            "Loading"
+          ) : session?.user ? (
+            <div className="flex justify-center items-center gap-7">
+              <h1>{session.user.name}</h1>
+              <button onClick={() => logOut()}>Logout</button>
+            </div>
+          ) : (
+            <Link href="/login" className="px-6">
+              Login
+            </Link>
+          )}
           <Link href="/" className="px-6">
             Shop
           </Link>
