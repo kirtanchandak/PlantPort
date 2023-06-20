@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaHamburger } from "react-icons/fa";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
   const cart = useSelector((state) => state.cart);
@@ -13,6 +14,8 @@ const Navbar = () => {
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
+  const { status, data: session } = useSession();
   return (
     <div>
       <nav
@@ -30,8 +33,8 @@ const Navbar = () => {
         <div className="link-content hidden md:flex mt-4">
           <ul className="flex" id="nav">
             <li>
-              <Link href="/login" className="px-6">
-                Login
+              <Link href="/cart" className="px-6">
+                Cart 🛒 {getItemsCount()}
               </Link>
             </li>
             <li>
@@ -40,9 +43,15 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/cart" className="px-6">
-                Cart 🛒 {getItemsCount()}
-              </Link>
+              {status === "loading" ? (
+                "Loading"
+              ) : session?.user ? (
+                session.user.name
+              ) : (
+                <Link href="/login" className="px-6">
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>

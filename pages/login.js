@@ -29,6 +29,9 @@ function Login() {
         email,
         password,
       });
+      if (result.err) {
+        console.log(result.err);
+      }
     } catch (err) {
       console.log(err);
     }
