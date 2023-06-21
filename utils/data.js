@@ -7,6 +7,11 @@ export const data = {
       email: "kirtan@gmail.com",
       password: bcrypt.hashSync("123456"),
     },
+    {
+      name: "nirali",
+      email: "nirali@gmail.com",
+      password: bcrypt.hashSync("123456"),
+    },
   ],
   products: [
     {

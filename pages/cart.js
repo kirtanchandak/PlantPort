@@ -10,6 +10,7 @@ import {
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 function Cart() {
   const router = useRouter();
@@ -22,6 +23,8 @@ function Cart() {
       0
     );
   };
+
+  const { data: session } = useSession();
   return (
     <div>
       {cart.length === 0 ? (
@@ -101,13 +104,22 @@ function Cart() {
                     <div class="px-2 py-3 sm:pb-4.5 lg:py-5 border-2 border-gray-800">
                       <h1>Total Amount: ₹{getTotalPrice()}</h1>
                     </div>
-                    <div>
-                      <button
-                        class="bg-green-500  font-semibold px-4 py-1 rounded mt-3"
-                        onClick={() => router.push("/login?redirect=/shipping")}
-                      >
-                        Check Out
-                      </button>
+                    <div className="mt-3">
+                      {session?.user ? (
+                        <Link
+                          class="bg-green-500  font-semibold px-4 py-1 rounded "
+                          href="/shipping"
+                        >
+                          Check Out
+                        </Link>
+                      ) : (
+                        <Link
+                          class="bg-green-500  font-semibold px-4 py-1 rounded "
+                          href="/login"
+                        >
+                          Check Out
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>
