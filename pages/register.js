@@ -5,7 +5,7 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-function register() {
+function Register() {
   const {
     register,
     handleSubmit,
@@ -110,4 +110,4 @@ function register() {
   );
 }
 
-export default register;
+export default Register;
