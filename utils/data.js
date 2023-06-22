@@ -13,6 +13,23 @@ export const data = {
       password: bcrypt.hashSync("123456"),
     },
   ],
+  categories: [
+    {
+      name: "Indoor Planters",
+      slug: "indoor-planters",
+      img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/categories/ind.webp?updatedAt=1687428437928",
+    },
+    {
+      name: "Fancy Planters",
+      slug: "fancy-planters",
+      img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/categories/fan.webp?updatedAt=1687428437855",
+    },
+    {
+      name: "White Planters",
+      slug: "white-planters",
+      img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/categories/white.webp?updatedAt=1687428437889",
+    },
+  ],
   products: [
     {
       name: "Stlyish Coffee Planter",

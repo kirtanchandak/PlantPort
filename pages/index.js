@@ -14,8 +14,15 @@ export default function Home() {
   return (
     <>
       <Layout title="Home Page">
-        <div className="flex flex-col justify-center items-center mt-32">
-          <Categories />
+        <div className="flex flex-col justify-center items-center md:mt-28 mt-16">
+          <div className="p-8">
+            <h1 className="text-2xl font-bold">Top Categories</h1>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 md:gap-16 gap-8  pt-6">
+              {data.categories.map((category) => (
+                <Categories category={category} key={category.slug} />
+              ))}
+            </div>
+          </div>
           <div className="pt-5">
             <h1 className="text-2xl font-bold">Indoor Planters</h1>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-6">
