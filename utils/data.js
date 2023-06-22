@@ -37,6 +37,7 @@ export const data = {
       price: "20.00",
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/coffee.webp?updatedAt=1687069364083",
       category: "indoor-planters",
+      color: "white",
     },
     {
       name: "Tree Trunk Planter",
@@ -44,6 +45,7 @@ export const data = {
       price: "15.00",
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/trunk.webp?updatedAt=1687069364173",
       category: "indoor-planters",
+      color: "blue",
     },
     {
       name: "Light Green Creramic ",
@@ -51,13 +53,15 @@ export const data = {
       price: "25.00",
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/green-ceramic.webp?updatedAt=1687069364110",
       category: "indoor-planters",
+      color: "green",
     },
     {
-      name: "Plant Box Planter",
+      name: "Plant Box Pink Planter",
       slug: "plant-box-planter",
       price: "30.00",
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/plant-box.webp?updatedAt=1687069364296",
       category: "indoor-planters",
+      color: "white",
     },
     {
       name: "Peanut Shape Planter",
@@ -65,6 +69,7 @@ export const data = {
       price: "300.00",
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/fancy_planters/download.webp?updatedAt=1687426981587",
       category: "fancy-planters",
+      color: "brown",
     },
     {
       name: "Smiley ceramic Planter",
@@ -72,6 +77,7 @@ export const data = {
       price: "200.00",
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/fancy_planters/download__1_.webp?updatedAt=1687426981611",
       category: "fancy-planters",
+      color: "orange",
     },
     {
       name: "Owl On the Tree Planter",
@@ -79,6 +85,7 @@ export const data = {
       price: "250.00",
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/fancy_planters/owl.webp?updatedAt=1687427853930",
       category: "fancy-planters",
+      color: "brown",
     },
     {
       name: "Cute Cart shape Planter",
@@ -86,6 +93,7 @@ export const data = {
       price: "150.00",
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/fancy_planters/cart.webp?updatedAt=1687427854023",
       category: "fancy-planters",
+      color: "orange",
     },
   ],
 };
