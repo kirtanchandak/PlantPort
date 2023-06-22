@@ -58,6 +58,7 @@ function Cart() {
                       <div className="flex items-center gap-5 flex-col md:flex-row">
                         <div className="">
                           <Image
+                            alt="product-img"
                             src={item.img}
                             width={300}
                             height={300}

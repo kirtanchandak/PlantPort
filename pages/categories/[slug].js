@@ -4,8 +4,6 @@ import { data } from "@/utils/data";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import Image from "next/image";
-import { useDispatch } from "react-redux";
-import { addToCart } from "@/redux/cart.slice";
 
 function CategoryPage() {
   const router = useRouter();
@@ -23,8 +21,6 @@ function CategoryPage() {
     return category ? category.name : "";
   };
   const title = getCategoryName(slug);
-
-  const dispatch = useDispatch();
   return (
     <>
       <Layout>
