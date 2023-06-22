@@ -52,7 +52,7 @@ function CategoryPage() {
     <>
       <Layout>
         <div className="flex">
-          <div class="bg-white p-4 rounded shadow mt-[85px] px-8">
+          <div class="bg-white p-4 rounded shadow mt-[85px] px-8 hidden sm:block">
             <div class="flex justify-between items-center mb-4">
               <h2 class="text-lg font-semibold">Filters</h2>
               <button onClick={() => clearAll()} class="text-gray-600">
@@ -127,27 +127,8 @@ function CategoryPage() {
               </div>
             </div>
           </div>
-
-          {/* <div className="ml-9 mt-24 w-1/4">
-            <div className="flex gap-14">
-              <h1 className="text-xl font-bold">Filters</h1>
-              <button onClick={() => clearAll()} className="mt-1">
-                Clear All
-              </button>
-            </div>
-            <div>
-              <h1>Color</h1>
-              <div className="flex flex-col">
-                <button className="p-0" onClick={() => filterColors("orange")}>
-                  Orange
-                </button>
-                <button onClick={() => filterColors("brown")}>Brown</button>
-                <button onClick={() => filterColors("white")}>White</button>
-              </div>
-            </div>
-          </div> */}
           <div className="flex flex-col justify-center items-center md:mt-16 mt-16">
-            <div className="py-8 pr-8">
+            <div className="p-8 lg:py-8 lg:pr-8">
               <h1 className="text-2xl font-bold">{title}</h1>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-16 gap-6 pt-6">
                 {colors.map((product) => (
