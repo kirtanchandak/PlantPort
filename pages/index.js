@@ -5,11 +5,11 @@ import { data } from "@/utils/data";
 
 export default function Home() {
   const indoorPlanters = data.products.filter((product) =>
-    product.category.includes("Indoor Planters")
+    product.category.includes("indoor-planters")
   );
 
   const fancyPlanters = data.products.filter((product) =>
-    product.category.includes("Fancy Planters")
+    product.category.includes("fancy-planters")
   );
   return (
     <>
