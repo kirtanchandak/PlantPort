@@ -17,6 +17,13 @@ function CategoryPage() {
 
   const [colors, setColors] = useState([]);
 
+  const getCategoryProducts = () => {
+    const categoryProducts = data.products.filter((product) =>
+      product.category.includes(slug)
+    );
+    setColors(categoryProducts);
+  };
+
   useEffect(() => {
     if (slug) {
       const categoryProducts = data.products.filter((product) =>
@@ -33,18 +40,10 @@ function CategoryPage() {
   const title = getCategoryName(slug);
 
   const filterColors = (color) => {
-    if (color === null) {
-      setColors(categoryProducts);
-    } else {
-      const filteredProducts = data.products.filter((product) =>
-        product.color.includes(color)
-      );
-      setColors(filteredProducts);
-    }
-
-    if (color == null) {
-      setColors(categoryProducts);
-    }
+    const filteredProducts = data.products.filter((product) =>
+      product.color.includes(color)
+    );
+    setColors(filteredProducts);
   };
 
   const handleColorChange = (event) => {
@@ -52,11 +51,16 @@ function CategoryPage() {
       const color = event.target.value;
       filterColors(color);
     } else {
-      const categoryProducts = data.products.filter((product) =>
-        product.category.includes(slug)
-      );
-      setColors(categoryProducts);
+      getCategoryProducts();
     }
+  };
+
+  const clearAll = () => {
+    getCategoryProducts();
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
   };
 
   return (
@@ -66,7 +70,9 @@ function CategoryPage() {
           <div className="bg-white p-4 rounded shadow mt-[85px] px-8 hidden sm:block">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-semibold">Filters</h2>
-              <button className="text-gray-600">Clear all</button>
+              <button className="text-gray-600" onClick={clearAll}>
+                Clear all
+              </button>
             </div>
 
             <div className="mb-4">
