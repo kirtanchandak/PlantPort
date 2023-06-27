@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { data } from "@/utils/data";
 import Layout from "@/components/Layout";
@@ -9,13 +9,22 @@ function CategoryPage() {
   const router = useRouter();
   const { slug } = router.query;
 
-  const categoryProducts = data.products.filter((product) =>
-    product.category.includes(slug)
-  );
+  useEffect(() => {
+    if (router.isReady) {
+      console.log(slug);
+    }
+  }, [router.isReady, slug]);
 
-  if (categoryProducts.length === 0) {
-    console.log("no products found");
-  }
+  const [colors, setColors] = useState([]);
+
+  useEffect(() => {
+    if (slug) {
+      const categoryProducts = data.products.filter((product) =>
+        product.category.includes(slug)
+      );
+      setColors(categoryProducts);
+    }
+  }, [slug]);
 
   const getCategoryName = (slug) => {
     const category = data.categories.find((cat) => cat.slug === slug);
@@ -23,28 +32,30 @@ function CategoryPage() {
   };
   const title = getCategoryName(slug);
 
-  const [colors, setColors] = useState(categoryProducts);
-
   const filterColors = (color) => {
-    const filteredProducts = data.products.filter((product) =>
-      product.color.includes(color)
-    );
-    setColors(filteredProducts);
+    if (color === null) {
+      setColors(categoryProducts);
+    } else {
+      const filteredProducts = data.products.filter((product) =>
+        product.color.includes(color)
+      );
+      setColors(filteredProducts);
+    }
 
     if (color == null) {
       setColors(categoryProducts);
     }
   };
 
-  const clearAll = () => {
-    setColors(categoryProducts);
-  };
-
   const handleColorChange = (event) => {
-    const color = event.target.value;
-    filterColors(color);
-    if (!event.target.checked) {
-      clearAll();
+    if (event.target.checked) {
+      const color = event.target.value;
+      filterColors(color);
+    } else {
+      const categoryProducts = data.products.filter((product) =>
+        product.category.includes(slug)
+      );
+      setColors(categoryProducts);
     }
   };
 
@@ -52,76 +63,74 @@ function CategoryPage() {
     <>
       <Layout>
         <div className="flex">
-          <div class="bg-white p-4 rounded shadow mt-[85px] px-8 hidden sm:block">
-            <div class="flex justify-between items-center mb-4">
-              <h2 class="text-lg font-semibold">Filters</h2>
-              <button onClick={() => clearAll()} class="text-gray-600">
-                Clear all
-              </button>
+          <div className="bg-white p-4 rounded shadow mt-[85px] px-8 hidden sm:block">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-semibold">Filters</h2>
+              <button className="text-gray-600">Clear all</button>
             </div>
 
-            <div class="mb-4">
-              <h3 class="text-gray-800 font-medium mb-2">Color</h3>
-              <ul class="space-y-1">
+            <div className="mb-4">
+              <h3 className="text-gray-800 font-medium mb-2">Color</h3>
+              <ul className="space-y-1">
                 <li>
-                  <label class="inline-flex items-center">
+                  <label className="inline-flex items-center">
                     <input
                       type="checkbox"
-                      class="form-checkbox text-indigo-500"
+                      className="form-checkbox text-indigo-500"
                       value="brown"
                       onChange={handleColorChange}
                     />
-                    <span class="ml-2 text-gray-700">Brown</span>
+                    <span className="ml-2 text-gray-700">Brown</span>
                   </label>
                 </li>
                 <li>
-                  <label class="inline-flex items-center">
+                  <label className="inline-flex items-center">
                     <input
                       type="checkbox"
                       value="orange"
-                      class="form-checkbox text-indigo-500"
+                      className="form-checkbox text-indigo-500"
                       onChange={handleColorChange}
                     />
-                    <span class="ml-2 text-gray-700">Orange</span>
+                    <span className="ml-2 text-gray-700">Orange</span>
                   </label>
                 </li>
                 <li>
-                  <label class="inline-flex items-center">
+                  <label className="inline-flex items-center">
                     <input
                       type="checkbox"
                       value="white"
-                      class="form-checkbox text-indigo-500"
+                      className="form-checkbox text-indigo-500"
                       onChange={handleColorChange}
                     />
-                    <span class="ml-2 text-gray-700">White</span>
+                    <span className="ml-2 text-gray-700">White</span>
                   </label>
                 </li>
                 <li>
-                  <label class="inline-flex items-center">
+                  <label className="inline-flex items-center">
                     <input
                       type="checkbox"
                       value="blue"
-                      class="form-checkbox text-indigo-500"
+                      className="form-checkbox text-indigo-500"
                       onChange={handleColorChange}
                     />
-                    <span class="ml-2 text-gray-700">Blue</span>
+                    <span className="ml-2 text-gray-700">Blue</span>
                   </label>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h3 class="text-gray-800 font-medium mb-2">Price Range</h3>
-              <div class="flex items-center">
+              <h3 className="text-gray-800 font-medium mb-2">Price Range</h3>
+              <div className="flex items-center">
                 <input
                   type="text"
-                  class="w-20 border border-gray-300 rounded-l px-2 py-1"
+                  className="w-20 border border-gray-300 rounded-l px-2 py-1"
                   placeholder="Min"
                 />
-                <span class="mx-2">-</span>
+                <span className="mx-2">-</span>
                 <input
                   type="text"
-                  class="w-20 border border-gray-300 rounded-r px-2 py-1"
+                  className="w-20 border border-gray-300 rounded-r px-2 py-1"
                   placeholder="Max"
                 />
               </div>
