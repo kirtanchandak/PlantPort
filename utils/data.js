@@ -40,7 +40,7 @@ export const data = {
       color: "white",
     },
     {
-      name: "Tree Trunk Planter",
+      name: "Tree Trunk Blues Planter",
       slug: "tree-trunk-planter",
       price: "15.00",
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/trunk.webp?updatedAt=1687069364173",
