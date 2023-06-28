@@ -260,7 +260,10 @@ function CategoryPage() {
                     </label>
                   </li>
                 </ul>
-                <button className="mt-2 bg-yellow-200 p-1 rounded-md">
+                <button
+                  onClick={clearAll}
+                  className="mt-2 bg-yellow-200 p-1 rounded-md"
+                >
                   Clear All
                 </button>
               </div>
