@@ -27,18 +27,21 @@ const Navbar = () => {
   return (
     <div>
       <nav
-        className="flex flex-col md:flex-row bg-yellow-200 
-      text-2xl justify-between fixed w-screen font-poppins"
+        className="flex flex-col md:flex-row bg-[#BED7CA] 
+      text-2xl justify-between w-screen font-playfair pt-8 md:px-12 px-3"
       >
         <div className="flex items-center">
-          <Link href="/" className="pl-2 py-4 mr-auto md:mr-0 font-[600]">
+          <Link
+            href="/"
+            className="pl-2 py-4 mr-auto md:mr-0 font-extrabold text-3xl"
+          >
             Plants Port🪴
           </Link>
           <div className="md:hidden mr-2 cursor-pointer" onClick={toggle}>
             <FaHamburger />
           </div>
         </div>
-        <div className="link-content hidden md:flex mt-4">
+        <div className="link-content hidden md:flex mt-4 font-[500]">
           <ul className="flex gap-10" id="nav">
             <li>
               <Link href="/cart" className="">

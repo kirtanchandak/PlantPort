@@ -34,7 +34,7 @@ export const data = {
     {
       name: "Stlyish Coffee Planter",
       slug: "coffee-plant",
-      price: "20.00",
+      price: 150,
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/coffee.webp?updatedAt=1687069364083",
       category: "indoor-planters",
       color: "white",
@@ -42,7 +42,7 @@ export const data = {
     {
       name: "Tree Trunk Blues Planter",
       slug: "tree-trunk-planter",
-      price: "15.00",
+      price: 220,
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/trunk.webp?updatedAt=1687069364173",
       category: "indoor-planters",
       color: "blue",
@@ -50,7 +50,7 @@ export const data = {
     {
       name: "Light Green Creramic ",
       slug: "light-green-ceramic-planter",
-      price: "25.00",
+      price: 180,
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/green-ceramic.webp?updatedAt=1687069364110",
       category: "indoor-planters",
       color: "green",
@@ -58,7 +58,7 @@ export const data = {
     {
       name: "Plant Box Pink Planter",
       slug: "plant-box-planter",
-      price: "30.00",
+      price: 230,
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/plant-box.webp?updatedAt=1687069364296",
       category: "indoor-planters",
       color: "white",
@@ -66,7 +66,7 @@ export const data = {
     {
       name: "Peanut Shape Planter",
       slug: "peanut-shape-planter",
-      price: "300.00",
+      price: 300,
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/fancy_planters/download.webp?updatedAt=1687426981587",
       category: "fancy-planters",
       color: "brown",
@@ -74,7 +74,7 @@ export const data = {
     {
       name: "Smiley ceramic Planter",
       slug: "smiley-ceramic-planter",
-      price: "200.00",
+      price: 200,
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/fancy_planters/download__1_.webp?updatedAt=1687426981611",
       category: "fancy-planters",
       color: "orange",
@@ -82,7 +82,7 @@ export const data = {
     {
       name: "Owl On the Tree Planter",
       slug: "owl-on-the-tree-planter",
-      price: "250.00",
+      price: 250,
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/fancy_planters/owl.webp?updatedAt=1687427853930",
       category: "fancy-planters",
       color: "brown",
@@ -90,7 +90,7 @@ export const data = {
     {
       name: "Cute Cart shape Planter",
       slug: "cute-cart-shape-planter",
-      price: "150.00",
+      price: 150,
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/fancy_planters/cart.webp?updatedAt=1687427854023",
       category: "fancy-planters",
       color: "orange",

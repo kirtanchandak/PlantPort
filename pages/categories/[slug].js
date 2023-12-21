@@ -77,6 +77,19 @@ function CategoryPage() {
     setShowFilterOptions(false);
   };
 
+  //price logic
+  const [minPrice, setMinPrice] = useState(null);
+  const [maxPrice, setMaxPrice] = useState(null);
+  console.log(minPrice);
+  console.log(maxPrice);
+
+  const getPrice = async (minPrice, maxPrice) => {
+    const filteredProducts = data.products.filter((product) => {
+      product.price >= minPrice && product.category.price <= maxPrice;
+    });
+    console.log(filteredProducts);
+  };
+
   return (
     <>
       <Layout>
@@ -143,17 +156,22 @@ function CategoryPage() {
               <h3 className="text-gray-800 font-medium mb-2">Price Range</h3>
               <div className="flex items-center">
                 <input
-                  type="text"
+                  type="number"
                   className="w-20 border border-gray-300 rounded-l px-2 py-1"
                   placeholder="Min"
+                  onChange={(e) => setMinPrice(e.target.value)}
                 />
                 <span className="mx-2">-</span>
                 <input
-                  type="text"
+                  type="number"
                   className="w-20 border border-gray-300 rounded-r px-2 py-1"
                   placeholder="Max"
+                  onChange={(e) => setMaxPrice(e.target.value)}
                 />
               </div>
+              <button className="mt-2 bg-green-300 py-1 px-2 rounded-md">
+                Search
+              </button>
             </div>
           </div>
           <div className="flex flex-col justify-center items-center md:mt-16 mt-16">

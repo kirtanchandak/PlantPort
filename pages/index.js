@@ -2,6 +2,8 @@ import Categories from "@/components/Categories";
 import Layout from "@/components/Layout";
 import Products from "@/components/Products";
 import { data } from "@/utils/data";
+import heroimg from "../assets/plan-hero.webp";
+import Image from "next/image";
 
 export default function Home() {
   const indoorPlanters = data.products.filter((product) =>
@@ -14,8 +16,20 @@ export default function Home() {
   return (
     <>
       <Layout title="Home Page">
-        <div className="flex flex-col justify-center items-center md:mt-28 mt-16">
-          <div className="p-8">
+        <div className="md:flex font-playfair md:px-12 md:pt-6 px-4">
+          <div className="w-[50%] md:mt-24">
+            <p className="md:text-5xl text-5xl font-extrabold text-[#4FA06D] whitespace-normal">
+              Reserving Deforestation is&nbsp;complicated;
+              <br />
+              planting&nbsp;a tree is&nbsp;simple
+            </p>
+          </div>
+          <div className="md:w-[580px] px-4 pt-8">
+            <Image src={heroimg} alt="hero-img" />
+          </div>
+        </div>
+        <div className="flex flex-col justify-center items-center md:mt-4 mt-6">
+          <div className="md:px-12 px-6">
             <h1 className="text-2xl font-bold">Top Categories</h1>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 md:gap-16 gap-8  pt-6">
               {data.categories.map((category) => (
