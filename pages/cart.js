@@ -13,16 +13,18 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
 function Cart() {
-  const router = useRouter();
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const getTotalPrice = () => {
-    return cart.reduce(
-      (accumulator, item) => accumulator + item.quantity * item.price,
-      0
-    );
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    // Calculate total price based on cart items
+    cart.cart.cartItems.forEach((item) => {
+      totalPrice += item.price * item.quantity;
+    });
+    return totalPrice;
   };
+  calculateTotalPrice();
 
   const { data: session } = useSession();
   return (
@@ -53,7 +55,7 @@ function Cart() {
             <div class="container mx-auto px-4 py-8 pt-20 ">
               <div class="flex flex-col md:flex-row">
                 <div class="md:w-3/4 lg:pl-24">
-                  {cart.map((item) => (
+                  {cart.cart.cartItems?.map((item) => (
                     <div key={item.id} className="p-5 ">
                       <div className="flex items-center gap-5 flex-col md:flex-row">
                         <div className="">
@@ -74,7 +76,7 @@ function Cart() {
                             <button
                               className="bg-green-300 px-2"
                               onClick={() =>
-                                dispatch(incrementQuantity(item.id))
+                                dispatch(incrementQuantity({ slug: item.slug }))
                               }
                             >
                               +
@@ -82,7 +84,7 @@ function Cart() {
                             <button
                               className="bg-red-300 px-2"
                               onClick={() =>
-                                dispatch(decrementQuantity(item.id))
+                                dispatch(decrementQuantity({ slug: item.slug }))
                               }
                             >
                               -
@@ -91,7 +93,9 @@ function Cart() {
                           <p className="pt-2">Quantity: {item.quantity}</p>
                           <button
                             className="p-1 mt-2 text-gray-500"
-                            onClick={() => dispatch(removeFromCart(item.id))}
+                            onClick={() =>
+                              dispatch(removeFromCart({ slug: item.slug }))
+                            }
                           >
                             REMOVE
                           </button>
@@ -103,7 +107,7 @@ function Cart() {
                 <div class="md:w-3/4 md:pl-8">
                   <div class="ml-6 w-60 pt-4">
                     <div class="px-2 py-3 sm:pb-4.5 lg:py-5 border-2 border-gray-800">
-                      <h1>Total Amount: ₹{getTotalPrice()}</h1>
+                      <h1>Total Amount: {calculateTotalPrice()} </h1>
                     </div>
                     <div className="mt-3">
                       {session?.user ? (

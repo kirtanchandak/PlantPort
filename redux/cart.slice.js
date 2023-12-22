@@ -1,43 +1,63 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 
-const getInitialCartState = () => {
-  const cartItems = Cookies.get("cartItems");
-  return cartItems ? JSON.parse(cartItems) : [];
+const initialState = {
+  cart: Cookies.get("cart")
+    ? JSON.parse(Cookies.get("cart"))
+    : { cartItems: [] },
 };
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState: getInitialCartState(),
+  initialState: initialState,
   reducers: {
     addToCart: (state, action) => {
-      const itemExists = state.find((item) => item.id === action.payload.id);
-      if (itemExists) {
-        itemExists.quantity++;
-      } else {
-        state.push({ ...action.payload, quantity: 1 });
-      }
-      Cookies.set("cartItems", JSON.stringify(state));
+      const newItem = action.payload;
+      const existItem = state.cart.cartItems.find(
+        (item) => item.slug === newItem.slug
+      );
+      const cartItems = existItem
+        ? state.cart.cartItems.map((item) =>
+            item.name === existItem.name ? newItem : item
+          )
+        : [...state.cart.cartItems, newItem];
+      Cookies.set("cart", JSON.stringify({ ...state.cart, cartItems }));
+      return { ...state, cart: { ...state.cart, cartItems } };
     },
 
     incrementQuantity: (state, action) => {
-      const item = state.find((item) => item.id === action.payload);
-      item.quantity++;
+      const { slug } = action.payload;
+      const item = state.cart.cartItems.find((item) => item.slug === slug);
+      if (item) {
+        item.quantity++;
+        Cookies.set("cart", JSON.stringify({ ...state.cart }));
+      }
     },
 
     decrementQuantity: (state, action) => {
-      const item = state.find((item) => item.id === action.payload);
-      if (item.quantity === 1) {
-        const index = state.findIndex((item) => item.id === action.payload);
-        state.splice(index, 1);
-      } else {
-        item.quantity--;
+      const { slug } = action.payload;
+      const item = state.cart.cartItems.find((item) => item.slug === slug);
+      if (item) {
+        if (item.quantity === 1) {
+          state.cart.cartItems = state.cart.cartItems.filter(
+            (item) => item.slug !== slug
+          );
+        } else {
+          item.quantity--;
+        }
+        Cookies.set("cart", JSON.stringify({ ...state.cart }));
       }
     },
+
     removeFromCart: (state, action) => {
-      const index = state.findIndex((item) => item.id === action.payload);
-      state.splice(index, 1);
+      const { slug } = action.payload;
+      const cartItems = state.cart.cartItems.filter(
+        (item) => item.slug !== slug
+      );
+      state.cart.cartItems = cartItems;
+      Cookies.set("cart", JSON.stringify({ ...state.cart }));
     },
+
     emptyCart: (state) => {
       state = [];
       Cookies.remove("cartItems");

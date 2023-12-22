@@ -9,9 +9,9 @@ const Navbar = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const getItemsCount = () => {
-    return cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
-  };
+  // const getItemsCount = () => {
+  //   return cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
+  // };
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -45,7 +45,7 @@ const Navbar = () => {
           <ul className="flex gap-10" id="nav">
             <li>
               <Link href="/cart" className="">
-                Cart 🛒 {getItemsCount()}
+                Cart 🛒
               </Link>
             </li>
             <li>
