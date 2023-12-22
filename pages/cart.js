@@ -9,7 +9,6 @@ import {
 } from "@/redux/cart.slice";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
 function Cart() {
@@ -29,7 +28,7 @@ function Cart() {
   const { data: session } = useSession();
   return (
     <div>
-      {cart.length === 0 ? (
+      {cart.cart.cartItems.length === 0 ? (
         <>
           <Layout>
             <div className="flex justify-center items-center flex-col md:m-24 md:pt-0 pt-28">

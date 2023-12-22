@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { data } from "@/utils/data";
 import { useRouter } from "next/router";
@@ -16,6 +16,19 @@ function ProductPage() {
   if (!product) {
     return <p>Product not found</p>;
   }
+
+  const [showNotification, setShowNotification] = useState(false);
+  const addToBag = () => {
+    setShowNotification(true);
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 3000); // Hide notification after 3 seconds
+  };
+
+  const onAddToBag = async () => {
+    dispatch(addToCart(product));
+    addToBag();
+  };
   return (
     <>
       <Layout title={product.name}>
@@ -35,10 +48,15 @@ function ProductPage() {
             <div className="flex gap-5 pt-4">
               <button
                 className="px-3 py-2 border-[3px] border-green-500"
-                onClick={() => dispatch(addToCart(product))}
+                onClick={() => onAddToBag()}
               >
                 Add to bag
               </button>
+              {showNotification && (
+                <div className="fixed bottom-0 left-0 w-full bg-green-500 text-white text-center py-2">
+                  Product added to bag!
+                </div>
+              )}
               <button className="px-3 py-2 bg-green-500">Buy Now</button>
             </div>
           </div>
