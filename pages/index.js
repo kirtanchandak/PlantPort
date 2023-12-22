@@ -43,10 +43,10 @@ export default function Home() {
             <Image src={heroimg} alt="hero-img" />
           </div>
         </div>
-        <div className="text-center md:mt-16 mt-4 md:px-44 px-4">
+        <div className="text-center md:mt-16 mt-4 lg:px-44 md:px-18 px-4">
           <div>
             <h1 className="text-4xl font-extrabold ">About</h1>
-            <p className="md:text-3xl text-xl mt-4">
+            <p className="md:text-3xl text-xl mt-4 ">
               Are you confused in choosing yout plant to fill space in your
               home, office etc, here is the soultion to choose your planters
               according to your space. This platform guides you to choose the
@@ -146,7 +146,7 @@ export default function Home() {
                   Planter was good like me,
                   <br /> a superstar and best!!
                 </p>
-                <div className="flex items-center justify-center gap-1 mt-4">
+                <div className="flex items-center justify-center gap-1 mt-4 mb-6">
                   <Image src={star} width={40} height={40} />
                   <Image src={star} width={40} height={40} />
                   <Image src={star} width={40} height={40} />
@@ -165,7 +165,7 @@ export default function Home() {
                   Thanks greenery I got by the planter
                   <br /> suits my home apce and environment.
                 </p>
-                <div className="flex items-center justify-center gap-1 mt-4">
+                <div className="flex items-center justify-center gap-1 mt-4 mb-6">
                   <Image src={star} width={40} height={40} />
                   <Image src={star} width={40} height={40} />
                   <Image src={star} width={40} height={40} />
@@ -198,7 +198,7 @@ export default function Home() {
           </div>
           <div className="pt-5">
             <h1 className="text-2xl font-bold">Indoor Planters</h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-6 md:px-4">
               {indoorPlanters.map((product) => (
                 <Products product={product} key={product.slug} />
               ))}
@@ -206,7 +206,7 @@ export default function Home() {
           </div>
           <div className="pt-8">
             <h1 className="text-2xl font-bold">Fancy Planters</h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-6 md:px-4">
               {fancyPlanters.map((product) => (
                 <Products product={product} key={product.slug} />
               ))}

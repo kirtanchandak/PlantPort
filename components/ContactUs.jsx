@@ -5,7 +5,7 @@ function ContactUs() {
     <div>
       <form action="#" class="mt-8">
         <div class="flex justify-center items-center">
-          <div class="grid grid-cols-1 bg-[#4FA06D] w-[600px] p-6 rounded-md">
+          <div class="grid grid-cols-1 bg-[#4FA06D] md:w-[600px] p-6 rounded-md">
             <h1 className="text-center font-extrabold text-4xl mt-4">
               Contact Us
             </h1>

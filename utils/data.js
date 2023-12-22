@@ -40,7 +40,7 @@ export const data = {
       color: "white",
     },
     {
-      name: "Tree Trunk Blues Planter",
+      name: "Tree Trunk Blues",
       slug: "tree-trunk-planter",
       price: 220,
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/trunk.webp?updatedAt=1687069364173",
@@ -80,7 +80,7 @@ export const data = {
       color: "orange",
     },
     {
-      name: "Owl On the Tree Planter",
+      name: "Owl On the Tree",
       slug: "owl-on-the-tree-planter",
       price: 250,
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/fancy_planters/owl.webp?updatedAt=1687427853930",
@@ -88,7 +88,7 @@ export const data = {
       color: "brown",
     },
     {
-      name: "Cute Cart shape Planter",
+      name: "Cute Cart shape",
       slug: "cute-cart-shape-planter",
       price: 150,
       img: "https://ik.imagekit.io/kirtanchandak/Plant_Port_/fancy_planters/cart.webp?updatedAt=1687427854023",
