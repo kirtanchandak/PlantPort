@@ -33,7 +33,7 @@ export default function Home() {
               </p>
             </div>
             <div className="flex gap-6 mt-8 font-[600] text-lg">
-              <button className="bg-[#4FA06D] p-2 rounded-full">
+              <button className="bg-[#4FA06D] p-2  rounded-full">
                 Shop Now
               </button>
               <button className="">View Offers</button>
@@ -43,7 +43,7 @@ export default function Home() {
             <Image src={heroimg} alt="hero-img" />
           </div>
         </div>
-        <div className="text-center md:mt-16 mt-4 lg:px-44 md:px-18 px-4">
+        <div className="text-center mt-16 lg:px-44 md:px-18 px-4">
           <div>
             <h1 className="text-4xl font-extrabold ">About</h1>
             <p className="md:text-3xl text-xl mt-4 ">
@@ -54,22 +54,22 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center md:mt-16 mt-6">
+        <div className="flex flex-col justify-center items-center mt-16">
           <div className="md:px-12 px-6">
             <h1 className="text-4xl font-bold text-center mt-4">
               What does your style suits?
             </h1>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 md:gap-16 gap-8  md:mt-16 mt-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 md:gap-16 gap-8  mt-16">
               {data.categories.map((category) => (
                 <Categories category={category} key={category.slug} />
               ))}
             </div>
           </div>
           <div>
-            <h1 className="text-4xl font-bold text-center mt-4 md:mt-16">
+            <h1 className="text-4xl font-bold text-center mt-16">
               What does your space need?
             </h1>
-            <div className="flex md:gap-8 gap-2 md:mt-16 mt-4 px-4">
+            <div className="flex md:gap-8 gap-2 mt-16 px-4">
               <div>
                 <Image
                   src="https://ik.imagekit.io/kirtanchandak/Plant_Port_/plant-box.webp?updatedAt=1687069364296"
@@ -106,13 +106,13 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex md:gap-8 gap-2 md:mt-16 mt-4 px-4">
+          <div className="flex md:gap-8 gap-2 mt-16 px-4">
             <button className="p-5 bg-[#4FA06D] rounded-2xl mt-3 text-2xl font-bold">
               View All Plants
             </button>
           </div>
 
-          <div className="md:flex gap-16 md:mt-16 mt-14 px-4">
+          <div className="md:flex gap-16 mt-16 px-4">
             <div>
               <Image
                 src={customize}
@@ -121,7 +121,7 @@ export default function Home() {
                 className="rounded-2xl"
               />
             </div>
-            <div className="md:mt-16 mt-6">
+            <div className="mt-16 ">
               <p className="md:text-3xl text-2xl">
                 We will customize your pots based on your <br />
                 needs like paintings, shape of pot, colour,
@@ -130,7 +130,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="md:px-12 px-6 md:mt-16 mt-4">
+          <div className="md:px-12 px-6 mt-16">
             <h1 className="text-4xl font-bold text-center mt-4">
               Our Happy Clients
             </h1>
@@ -193,10 +193,10 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="md:mt-16 mt-4">
+          <div className="mt-16">
             <ContactUs />
           </div>
-          <div className="pt-5">
+          <div className="pt-5 mt-16">
             <h1 className="text-2xl font-bold">Indoor Planters</h1>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-6 md:px-4">
               {indoorPlanters.map((product) => (
@@ -204,7 +204,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="pt-8">
+          <div className="pt-8 mt-16">
             <h1 className="text-2xl font-bold">Fancy Planters</h1>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-6 md:px-4">
               {fancyPlanters.map((product) => (
