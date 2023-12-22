@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { data } from "@/utils/data";
 import { useRouter } from "next/router";
@@ -13,11 +13,13 @@ function ProductPage() {
   const { slug } = router.query;
   const product = data.products.find((e) => e.slug === slug);
 
-  if (!product) {
-    return <p>Product not found</p>;
-  }
-
   const [showNotification, setShowNotification] = useState(false);
+  useEffect(() => {
+    if (product) {
+      setShowNotification(false);
+    }
+  }, [product]);
+
   const addToBag = () => {
     setShowNotification(true);
     setTimeout(() => {
@@ -29,6 +31,11 @@ function ProductPage() {
     dispatch(addToCart(product));
     addToBag();
   };
+
+  if (!product) {
+    return <p>Product not found</p>;
+  }
+
   return (
     <>
       <Layout title={product.name}>
